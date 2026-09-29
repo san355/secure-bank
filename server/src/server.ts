@@ -37,7 +37,10 @@ app.get("/health", (_req, res) => {
   });
 });
 
-app.use("/api", routes);
+//app.use("/api", routes);
+app.get("/", (req, res) => {
+  res.send("Secure Bank API is running");
+});
 
 const PORT = Number(process.env.PORT) || 5000;
 
