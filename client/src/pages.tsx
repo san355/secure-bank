@@ -100,17 +100,19 @@ export function Dashboard() {
   }
 
   return (
-    <div>
+    <div className="dashboard">
       <button onClick={logout}>Logout</button>
 
       <h1>SecureBank Dashboard</h1>
-
+      <div className="balance-card">
       <h2>
         Balance: ₹{account?.balance ?? 0}
       </h2>
-
-      <h3>Transfer Money</h3>
-
+      </div>
+      <div className="card-container">
+        <div className="card">
+            <h3>Transfer Money</h3>
+            
       <input
         placeholder="Receiver Account Number"
         value={receiver}
@@ -128,6 +130,10 @@ export function Dashboard() {
         Transfer
       </button>
 
+        </div>
+      </div>
+      
+      <div className="transactions">
       <h3>Transactions</h3>
 
       {transactions.map((transaction) => (
@@ -137,6 +143,7 @@ export function Dashboard() {
           {new Date(transaction.createdAt).toLocaleString()}
         </div>
       ))}
+      </div>
     </div>
   );
 }
