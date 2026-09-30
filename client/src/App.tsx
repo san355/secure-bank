@@ -1,21 +1,34 @@
 import { useState } from "react";
-import { Login, Dashboard } from "./pages";
-import { Header } from "./components";
+import {
+  Login,
+  Register,
+  Dashboard
+} from "./pages";
 
 export default function App() {
-  const [loggedIn, setLoggedIn] = useState(
-    Boolean(localStorage.getItem("token"))
+
+  const [page, setPage] = useState(
+    localStorage.getItem("token")
+      ? "dashboard"
+      : "login"
   );
 
-  return (
-    <>
-      <Header />
+  if (page === "dashboard") {
+    return <Dashboard />;
+  }
 
-      {loggedIn ? (
-        <Dashboard />
-      ) : (
-        <Login onLogin={() => setLoggedIn(true)} />
-      )}
-    </>
+  if (page === "register") {
+    return (
+      <Register
+        onLogin={() => setPage("login")}
+      />
+    );
+  }
+
+  return (
+    <Login
+      onLogin={() => setPage("dashboard")}
+      onRegister={() => setPage("register")}
+    />
   );
 }
