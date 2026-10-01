@@ -14,7 +14,7 @@ app.use(helmet());
 
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:5173"
+    origin: process.env.CLIENT_URL || "http://localhost:5173" || "http://localhost:5174" || "http://localhost:5175",
   })
 );
 
@@ -37,7 +37,7 @@ app.get("/health", (_req, res) => {
   });
 });
 
-//app.use("/api", routes);
+app.use("/api", routes);
 app.get("/", (req, res) => {
   res.send("Secure Bank API is running");
 });
