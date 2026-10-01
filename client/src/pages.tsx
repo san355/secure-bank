@@ -153,7 +153,6 @@ export function Register({ onLogin }: RegisterProps) {
   );
 }
 
-
 export function Dashboard() {
   const [account, setAccount] =
     useState<Account | null>(null);
